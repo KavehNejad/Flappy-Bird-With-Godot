@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/sprites/background-day.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/yellowbird-upflap.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/yellowbird-downflap.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/yellowbird-midflap.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2, 2.5, 2.9, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9.33081, 66.482 ), Vector2( 72.3138, 31.4915 ), Vector2( 152.792, 132.964 ), Vector2( 209.943, 88.6426 ), Vector2( 258.93, 173.786 ), Vector2( 348.609, 120.134 ), Vector2( 502.697, 425.718 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ) ]
+}
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1029.0
+margin_bottom = 598.0
+texture = ExtResource( 3 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 403.505
+margin_top = 460.321
+margin_right = 637.505
+margin_bottom = 563.321
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 307.199
+margin_top = 38.6654
+margin_right = 798.199
+margin_bottom = 409.665
+custom_fonts/font = SubResource( 2 )
+text = "HIGH SCORES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Animation"
+anims/Animation = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 303.77, 146.96 )
+texture = ExtResource( 5 )
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

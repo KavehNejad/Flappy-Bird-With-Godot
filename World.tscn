@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera2D.gd" type="Script" id=2]
+[ext_resource path="res://World.gd" type="Script" id=3]
+[ext_resource path="res://Barrier.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/background-day.png" type="Texture" id=5]
+
+[node name="World" type="Node"]
+script = ExtResource( 3 )
+Barrier = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+margin_left = -519.0
+margin_top = -300.0
+margin_right = 1039.0
+margin_bottom = 617.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
